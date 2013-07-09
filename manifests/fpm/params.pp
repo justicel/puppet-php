@@ -42,6 +42,7 @@ class php::fpm::params {
 
   $ensure   = $php::params::ensure
   $package  = 'php5-fpm'
+  $service  = 'php5-fpm'
   $provider = undef
   $inifile  = '/etc/php5/fpm/php.ini'
   $settings = {

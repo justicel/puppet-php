@@ -44,7 +44,8 @@ class php::fpm(
   $package  = $php::fpm::params::package,
   $provider = $php::fpm::params::provider,
   $inifile  = $php::fpm::params::inifile,
-  $settings = $php::fpm::params::settings
+  $settings = $php::fpm::params::settings,
+  $service  = $php::fpm::params::service
 ) inherits php::fpm::params {
 
   package { $package:
@@ -57,7 +58,7 @@ class php::fpm(
     settings => $settings
   }
 
-  service { 'php5-fpm':
+  service { $service:
     ensure    => running,
     enable    => true,
     restart   => 'service php5-fpm reload',

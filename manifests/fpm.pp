@@ -61,7 +61,7 @@ class php::fpm(
   service { $service:
     ensure    => running,
     enable    => true,
-    restart   => 'service php5-fpm reload',
+    restart   => "service ${service} reload",
     hasstatus => true,
     require   => Package[$package]
   }

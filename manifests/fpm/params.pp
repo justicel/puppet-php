@@ -40,11 +40,21 @@
 #
 class php::fpm::params {
 
+  case $::osfamily {
+    'RedHat': {
+      $package = 'php-fpm'
+      $service = 'php-fpm'
+      $inifile = '/etc/php.ini'
+    }
+    'Debian': {
+      $package = 'php5-fpm'
+      $service = 'php5-fpm'
+      $inifile = '/etc/php5/fpm/php.ini'
+    }
+  }
+ 
   $ensure   = $php::params::ensure
-  $package  = 'php5-fpm'
-  $service  = 'php5-fpm'
   $provider = undef
-  $inifile  = '/etc/php5/fpm/php.ini'
   $settings = {
     set => {
       'PHP/short_open_tag'       => 'Off',

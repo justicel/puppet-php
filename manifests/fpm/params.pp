@@ -42,14 +42,16 @@ class php::fpm::params {
 
   case $::osfamily {
     'RedHat': {
-      $package = 'php-fpm'
-      $service = 'php-fpm'
-      $inifile = '/etc/php.ini'
+      $package  = 'php-fpm'
+      $service  = 'php-fpm'
+      $inifile  = '/etc/php.ini'
+      $poolpath = '/etc/php-fpm.d'
     }
     'Debian': {
-      $package = 'php5-fpm'
-      $service = 'php5-fpm'
-      $inifile = '/etc/php5/fpm/php.ini'
+      $package  = 'php5-fpm'
+      $service  = 'php5-fpm'
+      $inifile  = '/etc/php5/fpm/php.ini'
+      $poolpath = '/etc/php5/fpm/pool.d'
     }
   }
  

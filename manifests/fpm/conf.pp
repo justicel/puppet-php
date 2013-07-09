@@ -60,17 +60,17 @@ define php::fpm::conf (
 
   if ( $ensure == 'absent' ) {
 
-    file { "/etc/php5/fpm/pool.d/${pool}.conf":
+    file { "${php::fpm::params::poolpath}/${pool}.conf":
       ensure => absent,
-      notify => Service['php5-fpm']
+      notify => Service[$php::fpm::params::service]
     }
 
   } else {
 
-    file { "/etc/php5/fpm/pool.d/${pool}.conf":
+    file { "${php::fpm::params::poolpath}/${pool}.conf":
       ensure  => file,
-      notify  => Service['php5-fpm'],
-      require => Package['php5-fpm'],
+      notify  => Service[$php::fpm::params::service],
+      require => Package[$php::fpm::params::package],
       content => template('php/fpm/pool.conf.erb'),
       owner   => root,
       group   => root,

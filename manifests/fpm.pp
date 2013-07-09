@@ -55,7 +55,8 @@ class php::fpm(
 
   php::config { 'php-fpm':
     inifile  => $inifile,
-    settings => $settings
+    settings => $settings,
+    notify   => Service[$service],
   }
 
   service { $service:

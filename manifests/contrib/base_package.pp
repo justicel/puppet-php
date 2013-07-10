@@ -31,11 +31,17 @@ define php::contrib::base_package(
   $provider
 ) {
 
-	if !defined(Package['php5-common']) {
-		package { 'php5-common':
-			ensure 	 => $ensure,
-			provider => $provider
-		}
-	}
+  $package = $::osfamily ?
+    'RedHat' => 'php-common',
+    'Debian' => 'php5-common',
+    default  => '',
+  }
+
+  if !defined(Package[$package]) {
+    package { $package:
+      ensure 	 => $ensure,
+      provider => $provider
+    }
+  }
 
 }

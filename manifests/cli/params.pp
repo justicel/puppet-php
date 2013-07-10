@@ -41,9 +41,19 @@
 class php::cli::params {
 
   $ensure   = $php::params::ensure
-  $package  = 'php5-cli'
+
+  case $::osfamily {
+    'RedHat': {
+      $package  = 'php-fpm'
+      $inifile  = '/etc/php.ini'
+    }
+    'Debian': {
+      $package  = 'php5-fpm'
+      $inifile  = '/etc/php5/cli/php.ini'
+    }
+  }
+
   $provider = undef
-  $inifile  = '/etc/php5/cli/php.ini'
   $settings = {
     set => {
       'PHP/short_open_tag'       => 'Off',

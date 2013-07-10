@@ -44,11 +44,11 @@ class php::cli::params {
 
   case $::osfamily {
     'RedHat': {
-      $package  = 'php-fpm'
-      $inifile  = '/etc/php.ini'
+      $package  = 'php-cli'
+      $inifile  = undef
     }
     'Debian': {
-      $package  = 'php5-fpm'
+      $package  = 'php5-cli'
       $inifile  = '/etc/php5/cli/php.ini'
     }
   }

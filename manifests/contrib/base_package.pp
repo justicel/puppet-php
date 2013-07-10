@@ -31,7 +31,7 @@ define php::contrib::base_package(
   $provider
 ) {
 
-  $package = $::osfamily ?
+  $package = $::osfamily ? {
     'RedHat' => 'php-common',
     'Debian' => 'php5-common',
     default  => '',

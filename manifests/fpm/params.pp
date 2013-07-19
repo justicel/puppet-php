@@ -72,6 +72,7 @@ class php::fpm::params {
       'PHP/error_log'            => 'syslog',
       'PHP/output_buffering'     => 4096,
       'PHP/output_handler'       => 'Off',
+      'PHP/cgi.fix_pathinfo'     => '0',
       'Date/date.timezone'       => 'UTC'
     }
   }

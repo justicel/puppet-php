@@ -44,7 +44,8 @@ class php::apache(
   $package  = $php::apache::params::package,
   $provider = $php::apache::params::provider,
   $inifile  = $php::apache::params::inifile,
-  $settings = $php::apache::params::settings
+  $settings = $php::apache::params::settings,
+  $conffile = $php::apache::params::conffile
 ) inherits php::apache::params {
 
   php::contrib::base_package { 'apache':
@@ -60,6 +61,17 @@ class php::apache(
   php::config { 'php-apache':
     inifile  => $inifile,
     settings => $settings
+  }
+
+  #Config file for php
+  file { $conffile:
+    ensure  => file,
+    notify  => Service['httpd'],
+    require => Package[$php::apache::params::package],
+    content => template('php/apache/php5.conf.erb'),
+    owner   => root,
+    group   => root,
+    mode    => '0644',
   }
 
 }

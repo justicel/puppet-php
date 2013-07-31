@@ -66,10 +66,12 @@ class php::apache::params {
     'RedHat': {
       $package  = 'php'
       $inifile  = '/etc/php.ini'
+      $conffile = '/etc/httpd/conf.d/php.conf'
     }
     'Debian': {
       $package  = 'libapache2-mod-php5'
       $inifile  = '/etc/php5/php.ini'
+      $conffile = '/etc/apache2/mods-available/php5.conf'
     }
   }
 

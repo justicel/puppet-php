@@ -41,9 +41,8 @@
 class php::apache::params {
 
   $ensure   = $php::params::ensure
-  $package  = 'libapache2-mod-php5'
   $provider = undef
-  $inifile  = '/etc/php5/apache2/php.ini'
+
   $settings = {
     set => {
       'PHP/short_open_tag'       => 'Off',
@@ -60,6 +59,17 @@ class php::apache::params {
       'PHP/output_buffering'     => 4096,
       'PHP/output_handler'       => 'Off',
       'Date/date.timezone'       => 'UTC'
+    }
+  }
+
+  case $::osfamily {
+    'RedHat': {
+      $package  = 'php'
+      $inifile  = '/etc/php.ini'
+    }
+    'Debian': {
+      $package  = 'libapache2-mod-php5'
+      $inifile  = '/etc/php5/fpm/php.ini'
     }
   }
 

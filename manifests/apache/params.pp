@@ -45,7 +45,7 @@ class php::apache::params {
 
   $settings = {
     set => {
-      'PHP/short_open_tag'       => 'Off',
+      'PHP/short_open_tag'       => 'On',
       'PHP/asp_tags'             => 'Off',
       'PHP/expose_php'           => 'Off',
       'PHP/memory_limit'         => '1G',

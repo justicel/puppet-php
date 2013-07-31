@@ -69,7 +69,7 @@ class php::apache::params {
     }
     'Debian': {
       $package  = 'libapache2-mod-php5'
-      $inifile  = '/etc/php5/fpm/php.ini'
+      $inifile  = '/etc/php5/php.ini'
     }
   }
 
